@@ -1,0 +1,601 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #171a1d;
+    color: #ddd;
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* TOP BAR */
+
+.topbar {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 0 18px;
+    background: linear-gradient(to bottom, #25292d, #1d2023);
+    border-bottom: 1px solid #514d43;
+    box-shadow: 0 2px 12px #0008;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #c5a66b;
+}
+
+.date {
+    color: #c8c1ad;
+    font-size: 15px;
+}
+
+.resources {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.resources strong {
+    color: #e1d2ad;
+}
+
+.topbar button {
+    background: linear-gradient(to bottom, #34383b, #25282a);
+    border: 1px solid #696252;
+    padding: 7px 12px;
+    min-width: 75px;
+}
+
+/* MAIN */
+
+.game {
+    height: calc(100% - 100px);
+    display: grid;
+    grid-template-columns: 245px 1fr 255px;
+    min-width: 700px;
+}
+
+/* PANELS */
+
+.panel {
+    background: #202326;
+    padding: 14px;
+    overflow-y: auto;
+}
+
+.panel.left {
+    border-right: 1px solid #4b4941;
+}
+
+.panel.right {
+    border-left: 1px solid #4b4941;
+}
+
+.panel h2 {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #aa9669;
+    border-bottom: 1px solid #4a483f;
+    padding-bottom: 7px;
+    margin: 5px 0 10px;
+}
+
+/* COUNTRY CARD */
+
+.country-card {
+    background: linear-gradient(135deg, #303336, #25282a);
+    border: 1px solid #595449;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.country-card .flag {
+    font-size: 28px;
+}.country-card .flag img {
+    width: 48px;
+    height: 32px;
+    object-fit: cover;
+    display: block;
+}
+
+.country-card strong {
+    display: block;
+    margin-top: 5px;
+    color: #e1d4b7;
+    font-size: 15px;
+}
+
+.country-card div {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+/* STATS */
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #34373a;
+    font-size: 12px;
+}
+
+.stat span {
+    color: #aaa;
+}
+
+.stat strong {
+    color: #ddd;
+}
+
+/* STATE INFORMATION */
+
+#selectedCountry {
+    font-size: 18px;
+    color: #e0d4b6;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.state-information {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #c4c4c4;
+}
+
+.state-information b {
+    color: #ddd;
+}
+
+.state-information hr {
+    border: 0;
+    border-top: 1px solid #4a4841;
+}
+
+/* MAP */
+
+.map-area {
+    position: relative;
+    overflow: hidden;
+    background: #899694;
+}
+
+#map {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, #84918f, #a4a99f 45%, #7c8987);
+}
+
+#map::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    background:
+        repeating-linear-gradient(
+            115deg,
+            transparent 0 29px,
+            #ffffff08 30px 31px
+        );
+}
+
+/* MAP TITLE */
+
+.map-title {
+    position: absolute;
+    left: 43%;
+    top: 7%;
+    color: #3d5556aa;
+    font-size: 26px;
+    letter-spacing: 7px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* MAP CONTROLS */
+
+.map-controls {
+    position: absolute;
+    z-index: 50;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 5px;
+}
+
+.map-controls button {
+    background: #292c2ddd;
+    border: 1px solid #686151;
+    padding: 7px 11px;
+    font-size: 11px;
+}
+
+.map-controls button:hover {
+    background: #464b4d;
+}
+
+.map-controls button.active {
+    background: #806d4b;
+    border-color: #c0a66f;
+}
+
+/* COUNTRIES */
+
+.country {
+    position: absolute;
+    border: 1px solid #3f392f;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    text-shadow: 0 1px 2px #000;
+    padding: 8px;
+    box-shadow:
+        inset 0 0 0 1px #ffffff22,
+        0 3px 8px #0005;
+    transition: 0.15s;
+    z-index: 5;
+}
+
+.country:hover {
+    filter: brightness(1.2);
+    z-index: 20;
+}
+
+/* FRANCE */
+
+.france {
+    left: 28%;
+    top: 47%;
+    width: 18%;
+    height: 17%;
+    background: #536d82;
+}
+
+/* PRUSSIA */
+
+.prussia {
+    left: 48%;
+    top: 30%;
+    width: 17%;
+    height: 16%;
+    background: #596a75;
+}
+
+/* AUSTRIA */
+
+.austria {
+    left: 50%;
+    top: 47%;
+    width: 18%;
+    height: 18%;
+    background: #8a654f;
+}
+
+/* ITALY */
+
+.italy {
+    left: 49%;
+    top: 68%;
+    width: 13%;
+    height: 16%;
+    background: #667b5e;
+}
+
+/* SPAIN */
+
+.spain {
+    left: 18%;
+    top: 65%;
+    width: 15%;
+    height: 13%;
+    background: #8a7350;
+}
+
+/* PORTUGAL */
+
+.portugal {
+    left: 14%;
+    top: 66%;
+    width: 5%;
+    height: 11%;
+    background: #765f4b;
+}
+
+/* BRITAIN */
+
+.britain {
+    left: 27%;
+    top: 18%;
+    width: 10%;
+    height: 16%;
+    background: #5e6370;
+}
+
+/* RUSSIA */
+
+.russia {
+    left: 64%;
+    top: 14%;
+    width: 30%;
+    height: 40%;
+    background: #706a79;
+}
+
+/* OTTOMAN */
+
+.ottoman {
+    left: 64%;
+    top: 59%;
+    width: 27%;
+    height: 20%;
+    background: #806b5a;
+}
+
+/* SWEDEN */
+
+.sweden {
+    left: 50%;
+    top: 7%;
+    width: 12%;
+    height: 18%;
+    background: #69725f;
+}
+
+/* DENMARK */
+
+.denmark {
+    left: 45%;
+    top: 25%;
+    width: 6%;
+    height: 7%;
+    background: #746b5b;
+}
+
+/* NETHERLANDS */
+
+.netherlands {
+    left: 39%;
+    top: 31%;
+    width: 7%;
+    height: 6%;
+    background: #7a6957;
+}
+
+/* BELGIUM */
+
+.belgium {
+    left: 40%;
+    top: 38%;
+    width: 6%;
+    height: 6%;
+    background: #75634f;
+}
+
+/* SWITZERLAND */
+
+.switzerland {
+    left: 43%;
+    top: 55%;
+    width: 6%;
+    height: 6%;
+    background: #68735e;
+}
+
+/* ROMANIA */
+
+.romania {
+    left: 64%;
+    top: 50%;
+    width: 10%;
+    height: 9%;
+    background: #7a6e54;
+}
+
+/* SERBIA */
+
+.serbia {
+    left: 61%;
+    top: 58%;
+    width: 7%;
+    height: 7%;
+    background: #695e51;
+}
+
+/* GREECE */
+
+.greece {
+    left: 61%;
+    top: 72%;
+    width: 8%;
+    height: 9%;
+    background: #62715d;
+}
+
+/* PERSIA */
+
+.persia {
+    left: 76%;
+    top: 48%;
+    width: 16%;
+    height: 17%;
+    background: #806b48;
+    border-color: #403728;
+}
+
+.persia:hover {
+    filter: brightness(1.2);
+}
+
+/* BUTTONS */
+
+.large-button {
+    width: 100%;
+    margin: 4px 0;
+    padding: 9px;
+    text-align: left;
+    background: #303437;
+    border: 1px solid #666050;
+    font-size: 12px;
+}
+
+.large-button:hover {
+    background: #414548;
+}
+
+/* ALERT */
+
+.alert {
+    border-left: 3px solid #b4945d;
+    background: #302f2a;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #c8c2b3;
+}
+
+/* FOOTER */
+
+footer {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: #25292d;
+    border-top: 1px solid #4d4a42;
+    position: relative;
+    z-index: 100;
+}
+
+footer button {
+    background: #303437;
+    border: 1px solid #666050;
+    padding: 7px 13px;
+    font-size: 11px;
+}
+
+footer button:hover {
+    background: #414548;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .game {
+        grid-template-columns: 210px 1fr 220px;
+    }
+
+    .country {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 850px) {
+    .game {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .panel.right {
+        display: none;
+    }
+
+    .resources {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        gap: 10px;
+        padding: 0 8px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .date {
+        display: none;
+    }
+
+    .game {
+        grid-template-columns: 150px 1fr;
+    }
+
+    footer button {
+        padding: 6px 8px;
+        font-size: 9px;
+    }
+}/* =========================================================
+   3D STRATEGIC MAP
+   ========================================================= */
+
+#threeContainer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at center,
+            #26383d 0%,
+            #10191d 55%,
+            #070b0d 100%
+        );
+}
+
+#threeContainer canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.map-title {
+    z-index: 10;
+}
+
+.map-controls {
+    z-index: 20;
+}
+
+#threeContainer {
+    cursor: grab;
+}
+
+#threeContainer:active {
+    cursor: grabbing;
+}.flag img {
+    width: 48px;
+    height: 32px;
+    object-fit: cover;
+    display: block;
+}

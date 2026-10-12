@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EMPIRES: 1870</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="logo">
+            EMPIRES: <span>1870</span>
+        </div>
+
+        <div class="date">
+            1 January 1870
+        </div>
+
+        <div class="resources">
+            <span>💰 <strong>£ 125</strong></span>
+            <span>🏭 <strong>Industry 8</strong></span>
+            <span>👥 <strong>9.0M</strong></span>
+        </div>
+
+        <button id="pauseButton">
+            PAUSE
+        </button>
+
+    </header>
+
+
+    <main class="game">
+
+        <aside class="panel left">
+
+            <h2>PLAYER COUNTRY</h2>
+
+            <div class="country-card">
+
+                <div class="flag">
+   <img src="./flag.png" alt="Qajar Persia 1870">
+</div>
+                <strong>Persia</strong>
+
+                <div>Qajar Monarchy</div>
+
+                <div>Naser al-Din Shah Qajar</div>
+
+            </div>
+
+
+            <h2>COUNTRY</h2>
+
+            <div class="stat">
+                <span>Capital</span>
+                <strong>Tehran</strong>
+            </div>
+
+            <div class="stat">
+                <span>Population</span>
+                <strong>9.0M</strong>
+            </div>
+
+            <div class="stat">
+                <span>Government</span>
+                <strong>Monarchy</strong>
+            </div>
+
+            <div class="stat">
+                <span>Power</span>
+                <strong>Regional Power</strong>
+            </div>
+
+
+            <h2>MILITARY</h2>
+
+            <div class="stat">
+                <span>Army</span>
+                <strong>45</strong>
+            </div>
+
+            <div class="stat">
+                <span>Navy</span>
+                <strong>2</strong>
+            </div>
+
+            <div class="stat">
+                <span>Modernization</span>
+                <strong>24%</strong>
+            </div>
+
+
+            <h2>ECONOMY</h2>
+
+            <div class="stat">
+                <span>Industry</span>
+                <strong>8</strong>
+            </div>
+
+            <div class="stat">
+                <span>Agriculture</span>
+                <strong>62</strong>
+            </div>
+
+            <div class="stat">
+                <span>Trade</span>
+                <strong>30</strong>
+            </div>
+
+            <div class="stat">
+                <span>Railways</span>
+                <strong>0 km</strong>
+            </div>
+
+        </aside>
+
+
+        <section class="map-area">
+
+            <div id="map">
+
+                <div class="map-title">
+                    EURASIA
+                </div>
+
+                <div class="map-controls">
+
+                    <button id="politicalButton" class="active">
+                        POLITICAL
+                    </button>
+
+                    <button id="terrainButton">
+                        TERRAIN
+                    </button>
+
+                    <button id="supplyButton">
+                        SUPPLY
+                    </button>
+
+                </div>
+
+                <div id="threeContainer"></div>
+
+            </div>
+
+        </section>
+
+
+        <aside class="panel right">
+
+            <h2>SELECTED COUNTRY</h2>
+
+            <div id="selectedCountry" class="country-name">
+    <img src="qajar1870.png" class="country-flag" alt="Qajar Persia 1870">
+    <span>Persia</span>
+</div>
+            <div class="state-information">
+
+                <p>
+                    <b>Capital:</b> Tehran
+                </p>
+
+                <p>
+                    <b>Government:</b> Qajar Monarchy
+                </p>
+
+                <p>
+                    <b>Ruler:</b> Naser al-Din Shah Qajar
+                </p>
+
+                <hr>
+
+                <p>
+                    Persia stands between the Russian Empire,
+                    Ottoman Empire, Afghanistan and British
+                    influence in India.
+                </p>
+
+                <p>
+                    Its strategic position makes Persia an
+                    important regional power in 1870.
+                </p>
+
+            </div>
+
+
+            <h2>PROVINCES</h2>
+
+            <button class="large-button">
+                Tehran
+            </button>
+
+            <button class="large-button">
+                Azerbaijan
+            </button>
+
+            <button class="large-button">
+                Gilan
+            </button>
+
+            <button class="large-button">
+                Mazandaran
+            </button>
+
+            <button class="large-button">
+                Isfahan
+            </button>
+
+            <button class="large-button">
+                Fars
+            </button>
+
+            <button class="large-button">
+                Kerman
+            </button>
+
+            <button class="large-button">
+                Khorasan
+            </button>
+
+            <button class="large-button">
+                Yazd
+            </button>
+
+            <button class="large-button">
+                Khuzestan
+            </button>
+
+        </aside>
+
+    </main>
+
+
+    <footer>
+
+        <button>ARMY</button>
+        <button>ECONOMY</button>
+        <button>RESEARCH</button>
+        <button>DIPLOMACY</button>
+        <button>TRADE</button>
+        <button>CONSTRUCTION</button>
+
+    </footer>
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"
+    }
+}
+</script>
+
+<script type="module" src="game.js"></script>
